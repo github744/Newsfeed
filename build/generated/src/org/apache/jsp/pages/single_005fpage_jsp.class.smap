@@ -1,0 +1,16 @@
+SMAP
+single_005fpage_jsp.java
+JSP
+*S JSP
+*F
++ 0 single_page.jsp
+pages/single_page.jsp
+*L
+1,20:44
+20:63,2
+21,8:65
+29:73,3
+30,181:76
+211:257,3
+212,11:260
+*E
