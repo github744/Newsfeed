@@ -84,7 +84,7 @@
        
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox" name="remember" value="remember"> Remember me</label>
-            <a type="button"  href="Sendlink.jsp?userid=<%=userid%>&role=<%=role%>" class="pull-right">Forgot Password?</a>
+            <a type="button"  href="Sendmail.jsp?userid=<%=userid%>&role=<%=role%>" class="pull-right">Forgot Password?</a>
         </div>  </br>
     
  <center class="contact_form">  <input type="submit" name="submit" value="Sign In" id="submit"></center> 

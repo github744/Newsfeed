@@ -107,12 +107,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
                 role = c.getValue();
         }
         
-          String msg2 = request.getParameter("msg2");
-    if(msg2!=null)
-        out.println("<script>alert(\"" +msg2+ "\")</script>");
-     String msg3 = request.getParameter("msg3");
-            if (msg3 != null) 
-                out.print("<script>alert(\"" +msg3+ "\")</script>");
+         
         
     String msg = request.getParameter("msg");
     if(msg!=null)
@@ -150,7 +145,7 @@ if(role.contains("Reporter"))out.println("checked");
       out.write("       \n");
       out.write("        <div class=\"clearfix\">\n");
       out.write("            <label class=\"pull-left checkbox-inline\"><input type=\"checkbox\" name=\"remember\" value=\"remember\"> Remember me</label>\n");
-      out.write("            <a type=\"button\"  href=\"Sendlink.jsp?userid=");
+      out.write("            <a type=\"button\"  href=\"Sendmail.jsp?userid=");
       out.print(userid);
       out.write("&role=");
       out.print(role);
