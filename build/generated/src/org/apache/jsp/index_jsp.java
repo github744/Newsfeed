@@ -447,7 +447,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <h2><span>Subscription</span></h2><br/>\n");
       out.write("                                    <ul>\n");
       out.write("\n");
-      out.write("                                        <form  method=\"post\">\n");
+      out.write("                                        <form  action=\"AdminController?op=addsubscriber\" method=\"post\">\n");
       out.write("\n");
       out.write("                                            <div class=\"form-group\">\n");
       out.write("                                                <input type=\"text\"   class=\"form-control\" placeholder=\"Name*\" required=\"required\" name=\"name\">\n");
@@ -483,42 +483,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"assets/js/custom.js\"></script>\n");
       out.write("    </body>\n");
       out.write("                   \n");
-if(request.getParameter("submit")!=null){
-      out.write('\n');
-      com.beans.Subscriber subscriber = null;
-      synchronized (_jspx_page_context) {
-        subscriber = (com.beans.Subscriber) _jspx_page_context.getAttribute("subscriber", PageContext.PAGE_SCOPE);
-        if (subscriber == null){
-          subscriber = new com.beans.Subscriber();
-          _jspx_page_context.setAttribute("subscriber", subscriber, PageContext.PAGE_SCOPE);
-        }
-      }
-      out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("subscriber"), request);
-      out.write('\n');
-      out.write('\n');
-
-Connection con = null;
-PreparedStatement smt=null;
-try{
-    Class.forName("com.mysql.jdbc.Driver");
-    con =DriverManager.getConnection("jdbc:mysql://localhost:3306/training","root","5050");
-    String sql = "Insert into subscribers (name,email) values(?,?)";
-    smt = con.prepareStatement(sql);
-    smt.setString(1, subscriber.getName());
-    smt.setString(2, subscriber.getEmail());
-    int n =smt.executeUpdate();
-    con.close();
-    smt.close();
-    if(n>0)
-        out.println("<script>alert('Thanks for subscription !');</script>");
-}catch(Exception e){
-    if(e.getMessage().contains("Duplicate"))
-        out.println("<script>alert('You Have Already Subscribed this Channel !!!');</script>");
-    System.out.println("Error : "+ e.getMessage()); 
-}
-}
-
       out.write("\n");
       out.write("</html>");
     } catch (Throwable t) {

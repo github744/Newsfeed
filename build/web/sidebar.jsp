@@ -35,12 +35,12 @@
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="category">
                                             <ul>
-                                                <li class="cat-item"><a href="Categorypage.jsp?cat_id=12">Sports</a></li>
-                                                <li class="cat-item"><a href="Categorypage.jsp?cat_id=10">Entertainment</a></li>
+                                                <li class="cat-item"><a href="Categorypage.jsp?cat_id=9">Sports</a></li>
+                                                <li class="cat-item"><a href="Categorypage.jsp?cat_id=7">Entertainment</a></li>
                                                 <li class="cat-item"><a href="Categorypage.jsp?cat_id=4">Business</a></li>
                                                   <li class="cat-item"><a href="Categorypage.jsp?cat_id=5">Education</a></li>
                                                 <li class="cat-item"><a href="Categorypage.jsp?cat_id=3">Technology</a></li>
-                                                <li class="cat-item"><a href="Categorypage.jsp?cat_id=11">Games</a></li>
+                                                
                                                 <li class="cat-item"><a href="Categorypage.jsp?cat_id=6">Life &amp; Style</a></li>
 
                                             </ul>
@@ -54,7 +54,7 @@
                                            <form  method="post" class="contact_form">
               <input class="form-control" type="text" name="name" placeholder="Name*">
           <textarea class="form-control" name="message" cols="30" rows="10" placeholder="Message*"></textarea>
-              <input type="submit" name="submit"  value="Send Message">
+   <input type="submit" name="submit1" id="submit1"  value="Send Feedback">
             </form>
                                         </div>
                                     </div>
@@ -79,13 +79,14 @@
        
     <%
         
-        if(request.getParameter("submit")!=null ){%>
+        if(request.getParameter("submit1")!=null ){%>
              <jsp:useBean id="feedback" class="com.beans.Feedback" scope="page"></jsp:useBean>
         <jsp:setProperty name="feedback" property="*"></jsp:setProperty>
          <%  FeedbackDao fd = new FeedbackDao();
            if (fd.add(feedback)) {
                         
-                        response.sendRedirect(request.getHeader("referer"));
+                        response.sendRedirect("index.jsp");
+                  
                     }}
     %>
      

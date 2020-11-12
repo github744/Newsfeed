@@ -24,9 +24,9 @@
           <li><a href="Categorypage.jsp?cat_id=4">Business</a></li>
           <li><a href="Categorypage.jsp?cat_id=5">Education</a></li>
           <li><a href="Categorypage.jsp?cat_id=6">Life & Style</a></li>
-          <li><a href="Categorypage.jsp?cat_id=10">Entertainment</a></li>
-          <li><a href="Categorypage.jsp?cat_id=11">Games</a></li>
-           <li><a href="Categorypage.jsp?cat_id=12">Sports</a></li>
+          <li><a href="Categorypage.jsp?cat_id=7">Entertainment</a></li>
+         
+           <li><a href="Categorypage.jsp?cat_id=9">Sports</a></li>
              
             </ul>
           </div>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="footer_bottom">
-      <p class="copyright">Copyright &copy;<a href="https://gist-technosolutions.business.site/" > Gist Technoslution Pvt Ltd </a><%= new java.util.Date().getYear()+1900%>. All Rights Reserved </p>
+      <p class="copyright">Copyright &copy;<a> Newsfeed </a><%= new java.util.Date().getYear()+1900%>. All Rights Reserved </p>
       <p class="developer">Developed By Wpfreeware</p>
     </div>
   </footer>

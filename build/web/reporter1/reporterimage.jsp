@@ -60,7 +60,7 @@
             </script>
 </head>
 
-<body class="">
+<body>
      <%
             if (session.getAttribute("reporter") == null) {
                 response.sendRedirect("../login.jsp");
@@ -83,26 +83,27 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="title" style="font-size:20px;">Edit Profile</h5>
+                <h5 class="title" style="font-size:20px;">Add Image</h5>
               </div>
+                     
               <div class="card-body">
                  
                   <div class="row">
-                    
+                      
                     <div class="col-md-10 pr-md-1">
                      <% if (request.getParameter("submit") != null) {%>
-                                         <jsp:useBean id="reporter1" class="com.beans.Reporter" scope="session"></jsp:useBean>
+                                          <jsp:useBean id="reporter1" class="com.beans.Reporter" scope="session"></jsp:useBean>
                                         <jsp:setProperty name="reporter1" property="*"></jsp:setProperty>
-                                            <form action="ReporterController?op=update" method="post" enctype="multipart/form-data">
-                                                <img src="../<%=reporter1.getIamge()%>" style="width:200px;height: 200px" border="2" id="preview" class="form-control"/><br/>
-                                            <input type="file" class=" form-control" name="iamge" onchange="readURL(this, preview);"/>
+                                            <form action="../ReporterController?op=update" method="post" enctype="multipart/form-data">
+                                                <img src="../<%=reporter1.getImage()%>" style="width:200px;height: 200px" border="2" id="preview" class="form-control"/><br/>
+                                            <input type="file" class=" form-control" name="image" onchange="readURL(this, preview);"/>
                                             <br/><br/>
                                             <center>   <input type="submit" value="Update" name="submit" class="btn btn-primary"/></center>
                                         </form>

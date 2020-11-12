@@ -77,12 +77,12 @@ public class AdminDao {
         Connection con = cp.getConnection();
         if (con != null) {
             try {
-                String sql = "update admin set name=?,image=? where id=?";
+                String sql = "update admin set name=?,password=?,image=? where id=?";
                 PreparedStatement smt = con.prepareStatement(sql);
                 smt.setString(1, admin.getName());
-               
-                 smt.setString(2, admin.getImage());
-                smt.setInt(3, admin.getId());
+                 smt.setString(2, admin.getPassword());
+                 smt.setString(3, admin.getImage());
+                smt.setInt(4, admin.getId());
                 if (smt.executeUpdate() > 0) {
                     status = true;
                 }
@@ -111,6 +111,7 @@ public class AdminDao {
                     admin.setId(rs.getInt("id"));
                     admin.setName(rs.getString("name"));
                     admin.setEmail(rs.getString("email"));
+                      admin.setPassword(rs.getString("password"));
                     admin.setImage(rs.getString("image"));
                     
                }

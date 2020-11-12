@@ -28,16 +28,17 @@ public class ReporterDao {
         Connection con = cp.getConnection();
         if (con != null) {
             try {
-                String sql = "Insert into reporter(name,dob,gender,contact,email,iamge,userid,password, status)values(?,?,?,?,?,?,?,?,?)";
+                String sql = "Insert into reporter(name,dob,gender,contact,email,userid,password,image,status)values(?,?,?,?,?,?,?,?,?)";
                 PreparedStatement smt = con.prepareStatement(sql);
                 smt.setString(1, reporter.getName());
                 smt.setString(2, reporter.getDob());
                 smt.setString(3, reporter.getGender());
                 smt.setString(4, reporter.getContact());
                 smt.setString(5, reporter.getEmail());
-                smt.setString(6, reporter.getIamge());
-                smt.setString(7, reporter.getUserid());
-                smt.setString(8, reporter.getPassword());
+               
+                smt.setString(6, reporter.getUserid());
+                smt.setString(7, reporter.getPassword());
+                  smt.setString(8, reporter.getImage());
                 smt.setString(9, reporter.getStatus());
                 if (smt.executeUpdate() > 0) {
                     status = true;
@@ -95,9 +96,10 @@ public class ReporterDao {
                     reporter.setGender(rs.getString("gender"));
                     reporter.setUserid(rs.getString("userid"));
                     reporter.setPassword(rs.getString("password"));
-                    reporter.setIamge(rs.getString("iamge"));
+               
                     reporter.setContact(rs.getString("contact"));
                     reporter.setEmail(rs.getString("email"));
+                    reporter.setImage(rs.getString("image"));
                     reporter.setStatus(rs.getString("status"));
                }
                 smt.close();
@@ -129,9 +131,10 @@ public class ReporterDao {
                     reporter.setGender(rs.getString("gender"));
                     reporter.setUserid(rs.getString("userid"));
                     reporter.setPassword(rs.getString("password"));
-                    reporter.setIamge(rs.getString("iamge"));
+                  
                     reporter.setContact(rs.getString("contact"));
                     reporter.setEmail(rs.getString("email"));
+                      reporter.setImage(rs.getString("image"));
                     reporter.setStatus(rs.getString("status"));
                    reporters.add(reporter);
                 }
@@ -166,9 +169,9 @@ public class ReporterDao {
                     reporter.setGender(rs.getString("gender"));
                     reporter.setUserid(rs.getString("userid"));
                     reporter.setPassword(rs.getString("password"));
-                    reporter.setIamge(rs.getString("iamge"));
                     reporter.setContact(rs.getString("contact"));
                     reporter.setEmail(rs.getString("email"));
+                    reporter.setImage(rs.getString("image"));
                     reporter.setStatus(rs.getString("status"));
                    reporters.add(reporter);
                 }
@@ -213,15 +216,16 @@ public class ReporterDao {
         Connection con = cp.getConnection();
         if (con != null) {
             try {
-                String sql = "update reporter set name=?,dob=?,gender=?,contact=?,email=?,iamge=?  where id=?";
+                String sql = "update reporter set name=?,dob=?,gender=?,contact=?,email=?,password=?,image=? where id=?";
                 PreparedStatement smt = con.prepareStatement(sql);
                 smt.setString(1, reporter.getName());
                 smt.setString(2, reporter.getDob());
                 smt.setString(3, reporter.getGender());
                 smt.setString(4, reporter.getContact());
                 smt.setString(5, reporter.getEmail());
-                 smt.setString(6, reporter.getIamge());
-                smt.setInt(7, reporter.getId());
+                  smt.setString(6, reporter.getPassword());
+                 smt.setString(7, reporter.getImage());
+                smt.setInt(8, reporter.getId());
                 if (smt.executeUpdate() > 0) {
                     status = true;
                 }

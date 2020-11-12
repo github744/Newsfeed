@@ -48,7 +48,7 @@ public class ConnectionPool {
             {
                 String userName = "root";
                 String password = "5050";
-                String url = "jdbc:mysql://localhost:3306/training";
+                String url = "jdbc:mysql://localhost:3306/newsfeed";
                 Class.forName("com.mysql.jdbc.Driver");
                 connnections = new Vector();
                 int count = 0;

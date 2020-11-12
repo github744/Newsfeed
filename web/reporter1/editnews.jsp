@@ -12,15 +12,16 @@
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
---><%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.daos.CategoryDao"%>
+--><%@page contentType="text/html" pageEncoding="UTF-8" import="java.sql.*"%>
+
 <%@page import="com.beans.Category"%>
 <%@page import="com.beans.News,com.beans.Reporter,java.util.ArrayList"%>
-<%@page import="com.beans.News"%>
-<%@page import="com.beans.Category"%>
-<%@page import="java.util.ArrayList"%>
+
+
+
 <%@page import="com.daos.NewsDao"%>
 <%@page import="com.daos.CategoryDao"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +58,8 @@
             </script>
 </head>
 
-<body class="">
+<body>
+      <jsp:useBean id="news" class="com.beans.News" scope="session"></jsp:useBean>
      <%
             if (session.getAttribute("reporter") == null) {
                 response.sendRedirect("../login.jsp");
@@ -87,7 +89,7 @@
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                    <jsp:useBean id="news" class="com.beans.News" scope="session"></jsp:useBean>
+                  
                 <h5 class="title">Edit Profile</h5>
               </div>
               <div class="card-body">
@@ -96,39 +98,73 @@
                     NewsDao nd = new NewsDao();
                     news = nd.getById(id);
                 %>
-                 <form action="editimage.jsp" class="form" method="post"> 
+               
+                 <form class="form" method="post"> 
                    
                         
                    <p>Enter title</p>
-                    <p><input type="text"  name="title" value="<%=news.getTitle()%>" class="form-control" pattern="^(\s?[^\s,]+@[^\s,]+\.[^\s,]+\s?,)*(\s?[^\s,]+@[^\s,]+\.[^\s,]+)$"/></p>
+                    <p><input type="text"  name="title" value="<%=news.getTitle()%>" class="form-control" /></p>
                     <p>Enter Description </p>
                      <p><textarea name="description" rows="10" cols="20" class="form-control"><%=news.getDescription()%></textarea></p>
                    
                       
                     <p> <input type="hidden" name="reporter_id" value="${reporter.id}"/></p>
-                    <p><input type="hidden" name="status" value="Pending"/><%=news.getReporter_id()%></p>
+                    <p><input type="hidden" name="status" value="Pending"/></p>
                     <p><input type="hidden" name="status_text" value="Pending for Approval By Admin"/></p>
                    
                    
                     <p>Select Categories for News</p>
-                   <%
-                                                            CategoryDao cd = new CategoryDao();
-                                                            ArrayList<Category> categories = cd.getAllRecords();
-                                                            ArrayList<Category> categories1 = cd.getAllCheckedCat(id);
-                                                            String cats=""; 
-                                                             for (Category cat : categories1) {
-                                                                 cats +=cat +  ","; 
-                                                             }
-                                                            for (Category cat : categories) {%> 
-                                                            <p>  <input type="checkbox" name="category" value="<%=cat.getId()%>"<% if (cats.contains(String.valueOf(cat.getId()))) out.println(" checked"); %> /> <%=cat.getName()%> </p>
-                                                        <%}%>
-                                                            <center> <p>  <input type="submit" value="Next" class="btn btn-success" id="submit" name="submit"/></p></center>
+                 <%
+                            
+                                     Connection con = null;
+                                      ResultSet rs = null;
+                                      PreparedStatement ps = null;
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsfeed", "root", "5050");
+                                    String category = "";
+
+                                    ps = con.prepareStatement("select name from news_cat where id in(select cat_id from ncr where news_id=?)");
+                                    ps.setInt(1, id);
+                                    rs = ps.executeQuery();
+                                    while (rs.next()) {
+                                        category += rs.getString("name") + " ";
+                                    }
+                                    //          System.out.println(category);
+
+                                    ps = con.prepareStatement("select * from news_cat");
+                                    rs = ps.executeQuery();
+                                    while (rs.next()) {%>
+                            <input type="checkbox" name="category" value="<%=rs.getString("id")%>"
+                                   <% if (category.contains(rs.getString("name"))) {
+                                           out.println("checked");
+                                       }%>/>
+                            <%=rs.getString("name")%><br/>
+                            <%} con.close();
+                                } catch (Exception e) {
+                                    System.out.println("Error:" + e.getMessage());
+                                }
+                            %>
+                           <center> <p>  <input type="submit" value="Next" class="btn btn-success" id="submit" name="submit"/></p></center>
                     </form>
               </div>
              
             </div>
           </div>
-                                                        <jsp:include page="ceo.jsp"></jsp:include>
+                                                     <div class="col-md-3" style="position: fixed;right:0px;">
+                                        <%if (request.getParameter("submit") != null) {
+                                                String catids[] = request.getParameterValues("category");
+                                                session.setAttribute("catids", catids);
+                                        %> 
+                                        <jsp:setProperty name="news" property="*"></jsp:setProperty>
+                                            <form action="../NewsController1?op=update" method="post" enctype="multipart/form-data">
+                                                <center>   <img src="../<%=news.getImage()%>" style="width:200px; height: 200px;" id="preview" class="form-control"/></center> <br/>
+                                            <input type="file" name="image" onchange="readURL(this, preview);" class="form-control"/> <br/>
+                                            <center>  <input type="submit" value="Save" class="btn btn-success" name="submit"/></center>
+                                        </form>
+                                        <% session.setAttribute("news", news);
+                                        }%>
+                                    </div>
         </div>
       </div>
      <jsp:include page="dashfooter.jsp"></jsp:include>

@@ -51,8 +51,8 @@
             <% if (request.getParameter("submit")!=null){%>
                 <jsp:setProperty name="reporter" property="*"></jsp:setProperty>
                 <center class="contact_form"> <form action="ReporterController?op=add" method="post" enctype="multipart/form-data"  class="wow fadeInLeftBig">
-                    <img src="" style="width:200px;height: 200px" border="2" id="preview" class="form-control"/><br/>
-                    <input type="file"  name="iamge" onchange="readURL(this,preview);"/>
+                    <img src="" style="width:200px;height: 200px" border="2" id="preview" class="form-control" alt="reporter.png"/><br/>
+                    <input type="file"  name="image" onchange="readURL(this,preview);"/>
                     <br/>
                     <input type="submit" value="Register" /> </center>
                 </form>

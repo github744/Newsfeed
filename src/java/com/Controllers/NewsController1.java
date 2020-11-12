@@ -7,8 +7,11 @@ package com.Controllers;
 
 import com.beans.JsonNews;
 import com.beans.News;
+import com.beans.Subscriber;
+import com.daos.EmailSender;
 import com.daos.MyUtility;
 import com.daos.NewsDao;
+import com.daos.SubscriberDao;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,6 +107,35 @@ public class NewsController1 extends HttpServlet {
                 out.println("News added Successfully !!");
                response.sendRedirect("reporter1/addnews.jsp");
             }
+        /*    
+            SubscriberDao sd = new SubscriberDao();
+            ArrayList<Subscriber> recipitants= sd.getAddress();
+                String host;
+                String port;
+                String user;
+                String pass;
+                //reads SMTP server setting from web.xml file 
+               ServletContext context = getServletContext();
+                host = context.getInitParameter("host");
+                port = context.getInitParameter("port");
+                user = context.getInitParameter("user");
+                pass = context.getInitParameter("pass");
+
+                String recipients[] = request.getParameter("recipitants").split(",");
+                String subject = "Click the link to reset the password";
+                String message = "click on http://localhost:8080/Newsfeed/index.jsp";
+
+                String resultMessage = "";
+
+                try {
+                    EmailSender.sendEmail(host, port, user, pass, recipients, subject, message);
+                    resultMessage = "The e-mail was sent successfully";
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    resultMessage = "There were an error: " + ex.getMessage();
+                } finally {
+                    out.println("<b> " + resultMessage + "</b>");
+                }*/
         }
          if(op!=null && op.equalsIgnoreCase("update")){
             HttpSession session = request.getSession();
@@ -123,6 +155,7 @@ public class NewsController1 extends HttpServlet {
                 out.println("News Updated Successfully !!");
                 response.sendRedirect(request.getHeader("referer"));
             }
+            
         }
          
     

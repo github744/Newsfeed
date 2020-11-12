@@ -98,8 +98,8 @@
                            <p class="fs-15">
                            <%= desc.length() > 100 ? desc.substring(0, 150) : desc%> <a href="detailnews.jsp?id=<%=news.getId()%>" >...See more
                               </p></a>
-                        </div> </div> </div>
-                     </li> </ul>
+                        </div> </li> </ul> </div> </div>
+                    
                          
                    
                    
@@ -120,28 +120,7 @@
                             </div>
                         </div>
                                             <jsp:include page="sidebar.jsp"></jsp:include>
-                                <div class="single_sidebar wow fadeInDown">
-                                    <h2><span>Subscription</span></h2><br/>
-                                    <ul>
-
-                                        <form  method="post">
-
-                                            <div class="form-group">
-                                                <input type="text"  id="inputEmail" value="" class="form-control" placeholder="Name*" required="required" name="userid">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" id="inputPassword"  value="" class="form-control" placeholder="Email*" required="required" name="password"> 
-                                            </div>
-
-
-
-
-
-                                            <center class="contact_form">  <input type="submit" value="Join Now" id="submit"></center> 
-                                        </form> 
-
-                                    </ul>
-                                </div>
+                               
                             </aside>
                         </div>
             </section> <jsp:include page="footer.jsp"></jsp:include>

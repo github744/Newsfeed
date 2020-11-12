@@ -85,7 +85,13 @@
               </div>
               <div class="card-body">
                     <jsp:useBean id="admin" class="com.beans.Admin" scope="session"></jsp:useBean>
-               
+                <%
+                    int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
+                 AdminDao rd = new AdminDao();
+                     admin = rd.getById(id);
+                      session.setAttribute("admin", admin);
+
+                %>
                  
                   <div class="row">
                     
@@ -94,10 +100,13 @@
                                             <table class="table"  >
                                                
                                                 <tr>
-                                                    <td>Name </td>
+                                                    <td>Name :</td>
                                                     <td><input type="text" name="name" class="form-control" value="${admin.name}"/></td>
                                                 </tr> 
-                                                
+                                                 <tr>
+                                                    <td>Change Password : </td>
+                                                    <td><input type="text" name="password" class="form-control" value="${admin.password}"/></td>
+                                                </tr> 
                                                 
                                                  
 

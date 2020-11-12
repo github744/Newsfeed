@@ -11,7 +11,7 @@ package com.beans;
  */
 public class Reporter {
     private int id;
-    private String name,dob,gender,userid,password,contact,iamge,email,status;
+    private String name,dob,gender,userid,password,contact,image,email,status;
 
     public void setId(int id) {
         this.id = id;
@@ -41,8 +41,8 @@ public class Reporter {
         this.contact = contact;
     }
 
-    public void setIamge(String iamge) {
-        this.iamge = iamge;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setEmail(String email) {
@@ -81,8 +81,8 @@ public class Reporter {
         return contact;
     }
 
-    public String getIamge() {
-        return iamge;
+    public String getImage() {
+        return image;
     }
 
     public String getEmail() {

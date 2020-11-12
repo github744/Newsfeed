@@ -50,7 +50,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
                   <li class="nav-link"><a href="dashboard.jsp" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="editprofile.jsp" class="nav-item dropdown-item">Settings</a></li>
+                  <li class="nav-link"><a href="editprofile.jsp?id=${admin.id}" class="nav-item dropdown-item">Settings</a></li>
                   <li class="dropdown-divider"></li>
                   <li class="nav-link"><a href="../login.jsp" class="nav-item dropdown-item">Log out</a></li>
                 </ul>

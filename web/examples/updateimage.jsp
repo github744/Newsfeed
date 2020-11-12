@@ -81,7 +81,7 @@
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="title" style="font-size:20px;">Edit Profile</h5>
+                <h5 class="title" style="font-size:20px;">Add Image</h5>
               </div>
               <div class="card-body">
                     <jsp:useBean id="admin" class="com.beans.Admin" scope="session"></jsp:useBean>

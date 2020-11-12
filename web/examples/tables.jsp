@@ -111,7 +111,7 @@
                          <%=reporter.getName()%>
                         </td>
                         <td>
-                        <img src="../<%=reporter.getIamge()%>" height="80" width="80">
+                        <img src="../<%=reporter.getImage()%>" height="80" width="80">
                         </td>
                         <td>
                          <%=reporter.getStatus()%>

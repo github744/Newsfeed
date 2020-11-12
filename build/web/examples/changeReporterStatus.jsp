@@ -94,7 +94,7 @@
                     <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
-                       <img class="card-img-bottom" src="../<%=reporter.getIamge()%>" alt="Card image" >
+                       <img class="card-img-bottom" src="../<%=reporter.getImage()%>" alt="Card image" >
                         
                       </div>
                     </div>

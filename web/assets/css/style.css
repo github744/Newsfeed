@@ -110,10 +110,10 @@ img:hover{opacity:0.75}
 .slider_article > h2 a{ background:none repeat scroll 0 0 rgba(0,0,0,0.4); color:#fff; font-size:18px; padding:10px; display:inline-block}
 .slider_article > p{ background:none repeat scroll 0 0 rgba(0,0,0,0.4); color:#fff; padding:3px; display:inline-block}
 .slick-prev:before{ content:""}
-.slick-prev{ background-image:url(images/facebook.png); background-repeat:no-repeat; background-position:center; left:10px}
+.slick-prev{ background-image:url(images/slider_prev.png); background-repeat:no-repeat; background-position:center; left:10px}
 .slick-next:before{ content:""}
-.slick-next{ background-image:url(images/logo.jpg); background-repeat:no-repeat; background-position:center; left:60px}
-
+.slick-next{ background-image:url(images/slider_next.png); background-repeat:no-repeat; background-position:center; left:60px}
+.slick-prev, .slick-next{background-color:#000; top:10%; width:40px; height:40px}
 .slick-prev:hover, .slick-next:hover{opacity:0.5}
 .latest_post{float:left; display:inline; width:100%}
 .latest_post > h2{background:none repeat scroll 0 0 #151515; color:#fff; font-family:'Oswald',sans-serif; font-size:18px; margin-top:5px; font-weight:400; margin-bottom:10px; margin-left:0; padding:0; position:relative; text-align:center; text-transform:uppercase}
@@ -267,7 +267,7 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .contact_area{float:left; display:inline; width:100%; margin-bottom:30px}
 .contact_area > h2{color:#fff; display:inline-block; font-size:20px; padding:7px 10px 5px; text-transform:uppercase; margin-bottom:30px}
 .contact_area > p{margin-bottom:20px}
-.contact_form input[type="text"], .contact_form input[type="email"],.contact_form input[type="radio"],.contact_form input[type="date"], .contact_form textarea{border-radius:0; margin-bottom:30px}
+.contact_form input[type="text"], .contact_form input[type="email"], .contact_form textarea{border-radius:0; margin-bottom:30px}
 .contact_form input[type="submit"]{border:medium none; color:#fff; height:35px; padding:5px 10px; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .contact_form input[type="submit"]:hover{border:1px solid #d083cf}
 @media(max-width:1199px ){.logo_area{width:34%}.add_banner{width:580px}.nav-tabs > li{width:32.3%}.photograph_nav li{width:31.5%}

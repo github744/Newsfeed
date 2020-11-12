@@ -82,7 +82,7 @@ public class ReporterController extends HttpServlet {
             
             String imagePath = "";
              imagePath = new MyUtility().UploadFile(getServletContext(), "media/reporter", request);
-            reporter.setIamge(imagePath);
+            reporter.setImage(imagePath);
             
             if(rd.add(reporter)){
                 session.removeAttribute("reporter");
@@ -97,9 +97,9 @@ public class ReporterController extends HttpServlet {
             // System.out.println("Reporter is "+ reporter.getName());
             String imagePath = "";
              imagePath = new MyUtility().UploadFile(getServletContext(), "media/reporter", request);
-              if(imagePath.trim().length()>0)
-                 reporter.setIamge(imagePath);
-            
+             if(imagePath.trim().length()>0)
+                reporter.setImage(imagePath);
+            //
             if(rd.update(reporter)){
                 session.removeAttribute("reporter1");
                 System.out.println("Reporter updated Successfully !");

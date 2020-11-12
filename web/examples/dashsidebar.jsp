@@ -37,7 +37,7 @@
             </a>
           </li>
           <li>
-            <a href="./editprofile.jsp">
+            <a href="./editprofile.jsp?id=${admin.id}">
               <i class="tim-icons icon-single-02"></i>
               <p>User Profile</p>
             </a>

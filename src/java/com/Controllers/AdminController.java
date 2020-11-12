@@ -6,10 +6,15 @@
 package com.Controllers;
 
 import com.beans.Admin;
+import com.beans.Subscriber;
 import com.daos.AdminDao;
+import com.daos.SubscriberDao;
 import com.daos.MyUtility;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,11 +60,10 @@ public class AdminController extends HttpServlet {
                                
             }
         }
+      
 
-       
     }
-
-    
-    
-
 }
+    
+
+

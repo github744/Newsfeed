@@ -159,6 +159,38 @@ public class NewsDao {
 
         return newsList;
     }
+     public ArrayList<News> getAllApprovedNews() {
+        ArrayList<News> newsList = new ArrayList();
+        try {
+            ConnectionPool cp = ConnectionPool.getInstance();
+            cp.initialize();
+            Connection con = cp.getConnection();
+            if (con != null) {
+                String sql = "select * from news where status='Approved'";
+                PreparedStatement smt = con.prepareStatement(sql);
+
+                ResultSet rs = smt.executeQuery();
+                while (rs.next()) {
+                    News news = new News();
+                    news.setId(rs.getInt("id"));
+                    news.setTitle(rs.getString("title"));
+                    news.setDescription(rs.getString("description"));
+                    news.setImage(rs.getString("image"));
+                    news.setReporter_id(rs.getInt("reporter_id"));
+                    news.setStatus(rs.getString("status"));
+                    news.setStatus_text(rs.getString("status_text"));
+
+                    newsList.add(news);
+                }
+                cp.putConnection(con);
+                smt.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return newsList;
+    }
 
     
       public ArrayList<News> getNewsByKeyword(String keyword) {
@@ -498,6 +530,7 @@ public boolean update(News news,String[] catids){
     
     return status;
 } 
+
 
 public boolean updateNewsStatus(News news, String status,String status_text){
     boolean sts = false;

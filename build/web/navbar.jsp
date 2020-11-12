@@ -41,9 +41,9 @@
           <li><a href="Categorypage.jsp?cat_id=4">Business</a></li>
           <li><a href="Categorypage.jsp?cat_id=5">Education</a></li>
           <li><a href="Categorypage.jsp?cat_id=6">Life & Style</a></li>
-          <li><a href="Categorypage.jsp?cat_id=10">Entertainment</a></li>
-          <li><a href="Categorypage.jsp?cat_id=11">Games</a></li>
-           <li><a href="Categorypage.jsp?cat_id=12">Sports</a></li>
+          <li><a href="Categorypage.jsp?cat_id=7">Entertainment</a></li>
+         
+           <li><a href="Categorypage.jsp?cat_id=9">Sports</a></li>
         </ul
       </div>
     </nav>
@@ -58,7 +58,7 @@
                             NewsDao nd = new NewsDao();
                             ArrayList<News> newsList=null;
                            
-                                newsList = nd.getAllNews();
+                                newsList = nd.getAllApprovedNews();
                            
                                 
                          for(News news : newsList){%>

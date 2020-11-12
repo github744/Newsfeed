@@ -81,7 +81,7 @@
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="title" style="font-size:20px;">Edit Profile</h5>
+                <h5 class="title" style="font-size:20px;">Add Image</h5>
               </div>
               <div class="card-body">
                    <jsp:useBean class="com.beans.Reporter" id="reporter" scope="session"></jsp:useBean>
@@ -97,7 +97,7 @@
                                         %>
                                         <jsp:setProperty name="news" property="*"></jsp:setProperty>
                                             <form action="../NewsController1?op=add" method="post" enctype="multipart/form-data">
-                                                <img src="" style="width:200px;height: 200px" border="2" id="preview" class="form-control"/><br/>
+                                                <img src="" style="width:200px;height: 200px" border="2" id="preview" class="form-control" alt="News-Image"/><br/>
                                             <input type="file" class=" form-control" name="image" onchange="readURL(this, preview);"/>
                                             <br/><br/>
                                             <center>   <input type="submit" value="Save" name="submit" class="btn btn-success"/></center>

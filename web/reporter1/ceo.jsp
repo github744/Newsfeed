@@ -10,8 +10,8 @@
                     <div class="block block-three"></div>
                     <div class="block block-four"></div>
                     <a href="javascript:void(0)">
-                      <img class="avatar" src="../assets/img/sir.jpg" alt="...">
-                      <h5 class="title">Er.Vikas Pathak</h5>
+                      <img class="avatar" src="../assets/img/arpit1.jpg" alt="...">
+                      <h5 class="title">Er.Arpit Saxena</h5>
                     </a>
                     <p class="description">
                       Ceo/Co-Founder

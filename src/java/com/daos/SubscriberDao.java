@@ -134,6 +134,35 @@ public class SubscriberDao {
  
     return subscribers;
 }  
+    public ArrayList<Subscriber> getAddress(){
+    ArrayList<Subscriber> subscribers=new ArrayList();
+    
+          try{
+            ConnectionPool cp = ConnectionPool.getInstance();
+            cp.initialize();
+            Connection con = cp.getConnection();
+            if (con!=null){
+                String sql = "select email from subscribers";
+                PreparedStatement smt = con.prepareStatement(sql);
+                ResultSet rs = smt.executeQuery();
+                while(rs.next()){
+                    Subscriber subscriber = new Subscriber();
+                   subscriber=new Subscriber();
+                   
+                   subscriber.setEmail(rs.getString("email"));
+                   
+                    
+                   subscribers.add(subscriber);
+                }
+               cp.putConnection(con);
+               smt.close();
+              }
+         }catch(Exception e){
+            System.out.println("Error " + e.getMessage());
+        }
+ 
+    return subscribers;
+}  
     public int getRecordCount()
 {   int total=0;
     try

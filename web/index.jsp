@@ -126,7 +126,7 @@
                                         <div class="single_post_content">
                                             <h2><span>Entertainment</span></h2>
                                             <ul class="business_catgnav wow fadeInDown">
-                                                 <% newsList = nd.getNewsByCatIdLimit(10,"Approved",1);
+                                                 <% newsList = nd.getNewsByCatIdLimit(7,"Approved",1);
                                                 for(News news : newsList){%>
                                                 <li>
                                                     <figure class="bsbig_fig"> <a href="detailnews.jsp?id=<%=news.getId()%>" class="featured_img"> <img alt="" src="<%=news.getImage()%>"> <span class="overlay"></span> </a>
@@ -140,7 +140,7 @@
                            
                            
                            
-                                newsList = nd.getNewsByCatId(10,"Approved");
+                                newsList = nd.getNewsByCatId(7,"Approved");
                            
                                 
                          for(News news : newsList){%>
@@ -204,10 +204,10 @@
                                     </ul>
                                 </div>
                                 <div class="single_post_content">
-                                    <h2><span>Games</span></h2>
+                                    <h2><span>Sports</span></h2>
                                     <div class="single_post_content_left">
                                         <ul class="business_catgnav">
-                                              <% newsList = nd.getNewsByCatIdLimit(11,"Approved",1);
+                                              <% newsList = nd.getNewsByCatIdLimit(9,"Approved",1);
                                                 for(News news : newsList){%>
                                             <li>
                                                 <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="detailnews.jsp?id=<%=news.getId()%>"> <img src="<%=news.getImage()%>" alt=""> <span class="overlay"></span> </a>
@@ -223,7 +223,7 @@
                            
                            
                            
-                                newsList = nd.getNewsByCatId(11,"Approved");
+                                newsList = nd.getNewsByCatId(9,"Approved");
                            
                                 
                          for(News news : newsList){%>
@@ -239,28 +239,7 @@
                             </div>
                         </div>
                                             <jsp:include page="sidebar.jsp"></jsp:include>
-                                <div class="single_sidebar wow fadeInDown">
-                                    <h2><span>Subscription</span></h2><br/>
-                                    <ul>
-
-                                        <form  method="post">
-
-                                            <div class="form-group">
-                                                <input type="text"   class="form-control" placeholder="Name*" required="required" name="name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email"  class="form-control" placeholder="Email*" required="required" name="email"> 
-                                            </div>
-
-
-
-
-
-                                            <center class="contact_form">  <input type="submit" value="Join Now" id="submit" name="submit"></center> 
-                                        </form> 
-
-                                    </ul>
-                                </div>
+                                
                             </aside>
                         </div>
                     </div>
@@ -277,30 +256,5 @@
         <script src="assets/js/custom.js"></script>
     </body>
                    
-<%if(request.getParameter("submit")!=null){%>
-<jsp:useBean id="subscriber" class="com.beans.Subscriber"></jsp:useBean>
-<jsp:setProperty name="subscriber" property="*"></jsp:setProperty>
 
-<%
-Connection con = null;
-PreparedStatement smt=null;
-try{
-    Class.forName("com.mysql.jdbc.Driver");
-    con =DriverManager.getConnection("jdbc:mysql://localhost:3306/training","root","5050");
-    String sql = "Insert into subscribers (name,email) values(?,?)";
-    smt = con.prepareStatement(sql);
-    smt.setString(1, subscriber.getName());
-    smt.setString(2, subscriber.getEmail());
-    int n =smt.executeUpdate();
-    con.close();
-    smt.close();
-    if(n>0)
-        out.println("<script>alert('Thanks for subscription !');</script>");
-}catch(Exception e){
-    if(e.getMessage().contains("Duplicate"))
-        out.println("<script>alert('You Have Already Subscribed this Channel !!!');</script>");
-    System.out.println("Error : "+ e.getMessage()); 
-}
-}
-%>
 </html>

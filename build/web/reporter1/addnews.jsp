@@ -89,7 +89,7 @@
                    <p>Enter title</p>
                     <p><input type="text"  name="title" value="" class="form-control" /></p>
                     <p>Enter Description </p>
-                     <p><textarea name="message" rows="10" cols="20" class="form-control"></textarea></p>
+                     <p><textarea name="description" rows="10" cols="20" class="form-control"></textarea></p>
                    
                       
                     <p> <input type="hidden" name="reporter_id" value="${reporter.id}"/></p>

@@ -44,7 +44,9 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" /><jsp:include page="base.jsp"></jsp:include>
 </head>
 
-<body class="">
+<body>
+
+        <jsp:useBean id="reporter" class="com.beans.Reporter" scope="session"></jsp:useBean>
      <%
             if (session.getAttribute("reporter") == null) {
                 response.sendRedirect("../login.jsp");
@@ -68,61 +70,72 @@
           </div>
         </div>
       </div>
+      
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <div class="card-header">
-                  <center>  <h3 class="title">Edit Profile</h3></center>
-              </div>
+             
               <div class="card-body">
                   
-                  <jsp:useBean id="reporter" class="com.beans.Reporter" scope="session"></jsp:useBean>
-                     
-                <form action="reporterimage.jsp" method="post" >
+            
+                 <%
+                    int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
+                    ReporterDao rd = new ReporterDao();
+                     reporter = rd.getById(id);
+                      session.setAttribute("reporter1", reporter);
+
+                %>
                  
                   <div class="row">
                     <div class="col-md-10 pr-md-1">
-                       <table class="table">
-                          
-                            <tr>
-                                <td>Enter Name </td>
-                                <td><input type="text" name="name" class="form-control" value="${reporter.name}"/></td>
-                            </tr> 
-                             <tr>
-                                <td>Enter DOB </td>
-                                <td><input type="date" name="dob" class="form-control" value="${reporter.dob}"/></td>
-                            </tr> 
-                             <tr>
-                                <td>Select Gender  </td>
-                                <td><input type="radio" name="gender" value="Male" ${reporter.gender eq "Male" ? "checked" : ""}/> Male&nbsp;&nbsp;
-                                <input type="radio" name="gender" value="Female" ${reporter.gender eq "Female" ? "checked" : ""}/> Female 
-                                </td>
-                            </tr> 
-                            
-                            <tr>
-                                <td>Enter Contact </td>
-                                <td><input type="text" name="contact" class="form-control" value="${reporter.contact}"/></td>
-                            </tr> 
-                            
-                             <tr>
-                                <td>Enter Email </td>
-                                <td><input type="email" name="email" class="form-control" value="${reporter.email}"/></td>
-                            </tr> 
-                            
-                         
-                           
-                           
-                        </table>
+                      <form action="reporterimage.jsp"   method="post" class="form">
+                                            <table class="table"  >
+                                               
+                                                 <tr><th colspan="2"><center><h2>Edit Profile </h2></center></th></tr>
+                                                <tr>
+                                                    <td> Reporter Name :</td>
+                                                    <td><input type="text" name="name" class="form-control" value="${reporter.name}"/></td>
+                                                </tr> 
+                                                <tr>
+                                                    <td> Reporter DOB :</td>
+                                                    <td><input type="date" name="dob" class="form-control" value="<%=reporter.getDob()%>"/></td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>Select Gender : </td>
+                                                               <td><input type="radio" name="gender" value="Male" <% if (reporter.getGender().equalsIgnoreCase("Male")) {
+                                                            out.println("checked");
+                                                        } %>/> Male&nbsp;
+                                                               <input type="radio" name="gender" value="Female"<% if (reporter.getGender().equalsIgnoreCase("Female")) {
+                                                                out.println("checked");
+                                                            }%>/> Female 
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>Reporter's Contact : </td>
+                                                    <td><input type="text" name="contact" class="form-control" value="<%=reporter.getContact()%>"/></td>
+                                                </tr> 
+
+                                                <tr>
+                                                    <td>Reporter's Email : </td>
+                                                    <td><input type="email" name="email" class="form-control" value="<%=reporter.getEmail()%>"/></td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>Change Password : </td>
+                                                    <td><input type="text" name="password" class="form-control" value="<%=reporter.getPassword()%>"/></td>
+                                                </tr> 
+
+
+                                            </table>
+                                                <center> <input type="submit" value="Next" name="submit" id ="submit" class=" btn btn-primary"/></center>
+                                        </form>
                     </div>
                    
                   </div>
                   
                   
-                 <center class="contact_form">  <input type="submit" value="Next" id="submit" name="submit" class="btn btn-success" ></center> 
-                                          
-                </form>
+                 
               </div>
             
             </div>

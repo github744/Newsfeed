@@ -15,6 +15,7 @@
 --><%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.daos.AdminDao"%>
 <%@page import="com.beans.Admin"%>
+<%@page import="com.daos.NewsDao"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +52,7 @@
             </script>
 </head>
 
-<body class="">
+<body>
       <%
             if (session.getAttribute("reporter") == null) {
                 response.sendRedirect("../login.jsp");
@@ -87,23 +88,21 @@
                    <jsp:useBean id="news" class="com.beans.News" scope="session"></jsp:useBean>
       
                
-                 
                   <div class="row">
                     
                     <div class="col-md-10 pr-md-1">
-                      <%if (request.getParameter("submit") != null) {
-                                                String catids[] = request.getParameterValues("category");
-                                                session.setAttribute("catids", catids);
-                                        %>
+                       <%if (request.getParameter("submit") != null) {
+                               String catids[] = request.getParameterValues("category");
+                            session.setAttribute("catids", catids);
+                                        %> 
                                         <jsp:setProperty name="news" property="*"></jsp:setProperty>
                                             <form action="../NewsController1?op=update" method="post" enctype="multipart/form-data">
-                                                <img src="../<%=news.getImage()%>" style="width:200px;height: 200px" border="2" id="preview" class="form-control"/><br/>
-                                            <input type="file" class=" form-control" name="image" onchange="readURL(this, preview);"/>
-                                            <br/><br/>
-                                            <center>   <input type="submit" value="Update" name="submit" class="btn btn-primary"/></center>
+                                                <img src="../<%=news.getImage()%>" style="width:200px; height: 200px;" id="preview" class="form-control"/> <br/>
+                                            <input type="file" name="image" onchange="readURL(this, preview);" class="form-control btn btn-success"/> <br/><br/>
+                                            <input type="submit" value="Save to Data base " class="btn btn-primary" name="submit"/>
                                         </form>
-                                         <%
-                                        session.setAttribute("news", news); }%>
+                                        <%
+                                       }%>
                     </div>
                    
                   </div>
